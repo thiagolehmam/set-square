@@ -11,23 +11,44 @@
 <body>
     <canvas width="600" height="400"></canvas>
     <script>
+
+
         var screen = document.querySelector('canvas');
         var brush = screen.getContext('2d');
 
-        brush.fillStyle = 'black';
 
-        brush.beginPath();
-        brush.moveTo(50, 50);
-        brush.lineTo(50, 400);
-        brush.lineTo(400, 400);
-        brush.fill();
+        var startingPoint = [50, 50];
+        var thirdPoint = [400, 400];
 
-        brush.fillStyle = 'white';
-        brush.beginPath();
-        brush.moveTo(100, 175);
-        brush.lineTo(100, 350);
-        brush.lineTo(275, 350);
-        brush.fill();
+
+
+        function outterTriangple() {
+            brush.fillStyle = 'black';
+
+            brush.beginPath();
+            brush.moveTo(startingPoint[0], startingPoint[1]);
+            brush.lineTo(thirdPoint[0], thirdPoint[1]);
+            brush.lineTo(startingPoint[0], thirdPoint[1]);
+            brush.fill();
+
+
+        }
+
+        function innerTriangple() {
+            var x = startingPoint[0] + 50;
+            var y = thirdPoint[1] - 50;
+
+            brush.fillStyle = 'white';
+            brush.beginPath();
+            brush.moveTo(startingPoint[0] + 50, startingPoint[1] + 125);
+            brush.lineTo(thirdPoint[0] - 125, thirdPoint[1] - 50);
+            brush.lineTo(x, y);
+            brush.fill();
+        }
+
+        outterTriangple();
+        innerTriangple();
+
     </script>
 </body>
 
